@@ -5,8 +5,8 @@ An experimental online shopping cart project using C# Asp.NET Core,  MVC, SQLSer
 
 
 ## Installation
-* Latest Visual Studio 2019 version => 16.8 Or Visual Studio Code with C# Extesions
-* dotnet SDK 3.1
+* [Latest Visual Studio 2019 version => 16.8](https://visualstudio.microsoft.com/pt-br/downloads/) Or [Visual Studio Code with C# Extesions](https://visualstudio.microsoft.com/pt-br/downloads/)
+* [dotnet SDK 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 * Sql Server 
 
 
