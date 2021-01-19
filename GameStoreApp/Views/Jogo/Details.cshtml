@@ -1,0 +1,48 @@
+@model Jogo
+
+<br/>
+<br/>
+<br/>
+<style>              
+#disabled {
+    pointer-events: none;
+    color: #ccc;
+}
+</style>
+
+<div class="container marginTop">
+    <div class="row">
+        <div class="card border-0">
+            <div class="text-center view overlay hm-white-slight">
+                <img src="@Model.ImagemUrl" class="img-fluid" width="250" height="300">
+                <a href="#">
+                    <div class="mask waves-effect waves-light"></div>
+                </a>
+            </div>
+            <div class="card-block">
+                <!--Title-->
+                <h2 class="card-title">@Model.Nome</h2>
+                <!--Text-->
+                <p class="card-text"><h5>@Model.DescricaoDetalhada</h5></p>
+                <p class="btn btn-group align-content-lg-end" >
+                    <a style="margin: 0 15px;" asp-controller="Jogo" asp-action="List" class="btn btn-secondary">Voltar para a lista de jogos</a>
+
+                    @if (@Model.EmEstoque == false)
+                    {
+                    <a id="disabled" style="margin: 0 15px;" class="btn btn-danger" id="cartButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-jogoId="@Model.JogoId">
+                        Este produto está esgotado
+                    </a>
+                    }
+                    else 
+                    {
+                    <a style="margin: 0 15px;" class="btn btn-primary" id="cartButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-jogoId="@Model.JogoId">
+                        Adicionar @Model.Nome ao carrinho
+                    </a>
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

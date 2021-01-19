@@ -1,0 +1,40 @@
+ @model Jogo           
+            
+<style>
+                
+#disabled {
+    pointer-events: none;
+    color: #ccc;
+}
+</style>
+            
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <img src="@Model.ImagemUrl" class="img-rounded" alt="" width="200" height="240">
+                </div>
+            <div class="caption">
+                <h4 class="pull-right">@Model.Preco.ToString("c")</h4>
+                <h3>
+                    <a asp-controller="Jogo" asp-action="Details" asp-route-jogoId="@Model.JogoId">@Model.Nome</a>
+                </h3>
+                <p>@Model.DescricaoCurta</p>
+            </div>
+             <div text-right">
+                <p class="formPullRightButton">
+
+                    @if (@Model.EmEstoque == false)
+                    {
+                    <a id="disabled" class="btn btn-danger" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-jogoId="@Model.JogoId">
+                        Produto esgotado
+                    </a>
+
+                    }
+                    else{
+                    <a class="btn btn-primary" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-jogoId="@Model.JogoId">
+                        Adicionar ao Carrinho
+                    </a>
+                    }
+
+                </p>
+            </div>
+            </div>

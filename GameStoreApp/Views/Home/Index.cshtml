@@ -1,0 +1,14 @@
+﻿@model HomeViewModel
+
+<br/>
+<br/>
+@await Html.PartialAsync("_Carousel")
+<br/>
+<h2 class="font-weight-bolder" >Os mais cotados da semana</h2>
+<br/>
+<div class="row">
+    @foreach (Jogo jogo in Model.JogosPreferidos)
+    {
+        <partial name="_JogosResumo" for ="@jogo"/>
+    }
+</div>

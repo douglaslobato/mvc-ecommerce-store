@@ -1,0 +1,15 @@
+@model JogoListViewModel
+<br/>
+<br/>
+<br/>
+    <div><h2>@Model.CategoriaAtual</h2></div>
+
+    <div class="row">
+        
+        @foreach (Jogo jogo in Model.Jogos)
+        {
+            @* @Html.Partial("_JogosResumo", jogo) *@
+            <partial name="_JogosResumo" for="@jogo"/>
+        }
+        
+    </div>

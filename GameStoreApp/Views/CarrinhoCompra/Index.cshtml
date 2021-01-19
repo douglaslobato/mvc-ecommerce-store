@@ -1,0 +1,63 @@
+@model CarrinhoCompraViewModel
+
+<br/>
+<br/>
+<br/>
+<div class="row checkoutForm">
+    
+    <img src="~/images/Full-Cart-icon.png" />
+    <div>
+        <h4>  Pedidos: </h4>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Quantidade</th>
+                <th>Jogo</th>
+                <th class="text-right">Preço</th>
+                <th class="text-right">Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CarrinhoCompra.CarrinhoCompraItens)
+            {
+                <tr>
+                    <td class="text-center">@item.Quantidade</td>
+                    <td class="text-left">@item.Jogo.Nome</td>
+                    <td class="text-right">@item.Jogo.Preco.ToString("c")</td>
+                    <td class="text-right">
+                        @((item.Quantidade * item.Jogo.Preco).ToString("c"))
+                    </td>
+                    <td class="text-center">
+                        <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra" asp-route-jogoId="@item.Jogo.JogoId"><img src="~/images/delete.png" /></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Total:</td>
+                <td class="text-right">
+                    @Model.CarrinhoCompraTotal.ToString("c")
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-right">
+        <div class="btn-group ">
+            <a style="margin: 0 15px;" class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
+            <a class="btn-group">
+               
+            <a style="color:white" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Mais Jogos  <span class="caret"></span>
+            </a>
+                @await Component.InvokeAsync("CategoriaMenu")
+                
+               
+            </a>
+        </div>
+    </div>
+</div>
+
